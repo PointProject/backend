@@ -9,9 +9,9 @@ public class MoneyPoint implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name="user", nullable=false)
-    private User user;
+/*    @ManyToOne
+    @JoinColumn(name="user")
+    private User user;*/
 
     private int value;
 
@@ -22,11 +22,11 @@ public class MoneyPoint implements Serializable {
     private boolean isActivated;
 
     @ManyToOne
-    @JoinColumn(name="zone", nullable=false)
+    @JoinColumn(name="zone")
     private Zone zone;
 
-    @OneToOne(mappedBy = "moneyPoint", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "race")
     private Race race;
 
     public MoneyPoint() {

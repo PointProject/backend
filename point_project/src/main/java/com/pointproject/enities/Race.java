@@ -17,8 +17,8 @@ public class Race implements Serializable {
     @JoinTable(name="race_user")
     private Set<User> users;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "moneyPoint")
+    @OneToOne(mappedBy = "race", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
     private MoneyPoint moneyPoint;
 
     @NotNull

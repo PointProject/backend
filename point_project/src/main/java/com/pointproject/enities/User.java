@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
+@Table(name = "user")
 public class User implements Serializable {
 
     @Id
@@ -36,15 +37,15 @@ public class User implements Serializable {
     private int age;
 
     @ManyToOne
-    @JoinColumn(name="city", nullable=false)
+    @JoinColumn(name="city")
     private City city;
 
     @ManyToOne
-    @JoinColumn(name="level", nullable=false)
+    @JoinColumn(name="level")
     private Level level;
 
-    @OneToMany(mappedBy = "user")
-    private Set<MoneyPoint> moneyPoints;
+/*    @OneToMany(mappedBy = "user")
+    private Set<MoneyPoint> moneyPoints;*/
 
     @ManyToMany(fetch = FetchType.EAGER,mappedBy = "users")
     private Set<Race> races;

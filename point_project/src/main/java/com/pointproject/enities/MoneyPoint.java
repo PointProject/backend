@@ -1,9 +1,10 @@
 package com.pointproject.enities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class MoneyPoint {
+public class MoneyPoint implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -27,4 +28,7 @@ public class MoneyPoint {
     @OneToOne(mappedBy = "moneyPoint", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
     private Race race;
+
+    public MoneyPoint() {
+    }
 }

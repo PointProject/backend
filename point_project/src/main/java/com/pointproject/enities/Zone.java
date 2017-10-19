@@ -1,10 +1,11 @@
 package com.pointproject.enities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-public class Zone {
+public class Zone implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -19,12 +20,12 @@ public class Zone {
 
     private String strokeColor;
 
-    @ManyToOne
-    @JoinColumn(name="zone", nullable=false)
+    @OneToMany(mappedBy = "zone")
     private Set<Point> points;
 
-    @ManyToOne
-    @JoinColumn(name="zone", nullable=false)
+    @OneToMany(mappedBy = "zone")
     private Set<MoneyPoint> moneyPoints;
 
+    public Zone() {
+    }
 }

@@ -4,10 +4,11 @@ import com.sun.istack.internal.NotNull;
 import javafx.beans.DefaultProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,5 +53,18 @@ public class User {
     private int expNum;
 
     public User() {
+    }
+
+    public User(String login, String password, String firstName, String lastName, int money, int phone, int age, City city, Level level, int expNum) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.money = money;
+        this.phone = phone;
+        this.age = age;
+        this.city = city;
+        this.level = level;
+        this.expNum = expNum;
     }
 }

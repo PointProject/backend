@@ -3,10 +3,11 @@ package com.pointproject.enities;
 import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-public class Race {
+public class Race implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,4 +27,6 @@ public class Race {
     @NotNull
     private String duration;
 
+    public Race() {
+    }
 }

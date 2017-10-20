@@ -14,6 +14,8 @@
         <version>1.5.8.RELEASE</version>
     </parent>
 
+    <packaging>war</packaging>
+
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -51,6 +53,11 @@
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>21.0</version>
         </dependency>
     </dependencies>
 

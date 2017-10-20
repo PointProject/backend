@@ -1,6 +1,6 @@
-package com.pointproject;
+package com.pointproject.controllers;
 
-import com.pointproject.enities.User;
+import com.pointproject.enities.GameUser;
 import com.pointproject.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ public class UserRestController {
    private UserRepo userRepo;
 
     @GetMapping("userList")
-    public List<User> customersList() {
+    public List<GameUser> customersList() {
         return userRepo.findAll();
     }
 }

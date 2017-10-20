@@ -36,7 +36,10 @@ public class Application {
             repo.save(new Country("USA"));
 
             // fetch all customers
-            log.info("Customers found with findAll():");
+            for (Country country: repo.findAll()){
+                System.out.println(country);
+            }
+
         };
     }
 }

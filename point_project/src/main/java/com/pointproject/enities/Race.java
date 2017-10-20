@@ -1,6 +1,5 @@
 package com.pointproject.enities;
 
-import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,16 +14,14 @@ public class Race implements Serializable {
 
     @ManyToMany
     @JoinTable(name="race_user")
-    private Set<User> users;
+    private Set<GameUser> gameUsers;
 
     @OneToOne(mappedBy = "race", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
     private MoneyPoint moneyPoint;
 
-    @NotNull
     private String startTime;
 
-    @NotNull
     private String duration;
 
     public Race() {

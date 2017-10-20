@@ -9,9 +9,9 @@ public class MoneyPoint implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-/*    @ManyToOne
-    @JoinColumn(name="user")
-    private User user;*/
+    @ManyToOne
+    @JoinColumn(name="gameUser")
+    private GameUser gameUser;
 
     private int value;
 
@@ -19,7 +19,7 @@ public class MoneyPoint implements Serializable {
 
     private double longitude;
 
-    private boolean isActivated;
+    private int isActivated;
 
     @ManyToOne
     @JoinColumn(name="zone")

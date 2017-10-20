@@ -1,39 +1,29 @@
 package com.pointproject.enities;
 
-import com.sun.istack.internal.NotNull;
-import javafx.beans.DefaultProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
-public class User implements Serializable {
+public class GameUser implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotNull
     private String login;
 
-    @NotNull
     private String password;
 
-    @NotNull
     private String firstName;
 
-    @NotNull
     private String lastName;
 
-    @NotNull
     private int money;
 
-    @NotNull
     private int phone;
 
-    @NotNull
     private int age;
 
     @ManyToOne
@@ -44,19 +34,18 @@ public class User implements Serializable {
     @JoinColumn(name="level")
     private Level level;
 
-/*    @OneToMany(mappedBy = "user")
-    private Set<MoneyPoint> moneyPoints;*/
+    @OneToMany(mappedBy = "gameUser")
+    private Set<MoneyPoint> moneyPoints;
 
-    @ManyToMany(fetch = FetchType.EAGER,mappedBy = "users")
+    @ManyToMany(fetch = FetchType.EAGER,mappedBy = "gameUsers")
     private Set<Race> races;
 
-    @NotNull
     private int expNum;
 
-    public User() {
+    public GameUser() {
     }
 
-    public User(String login, String password, String firstName, String lastName, int money, int phone, int age, City city, Level level, int expNum) {
+    public GameUser(String login, String password, String firstName, String lastName, int money, int phone, int age, City city, Level level, int expNum) {
         this.login = login;
         this.password = password;
         this.firstName = firstName;

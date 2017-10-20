@@ -1,6 +1,5 @@
 package com.pointproject.enities;
 
-import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,10 +15,8 @@ public class Point implements Serializable {
     @JoinColumn(name = "zone")
     private Zone zone;
 
-    @NotNull
     private double latitude;
 
-    @NotNull
     private double longitude;
 
     public Point() {

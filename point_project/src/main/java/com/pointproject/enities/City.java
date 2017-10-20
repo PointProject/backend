@@ -1,7 +1,5 @@
 package com.pointproject.enities;
 
-import com.sun.istack.internal.NotNull;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -13,10 +11,9 @@ public class City implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotNull
     private String title;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="country", nullable=false)
     private Country country;
 

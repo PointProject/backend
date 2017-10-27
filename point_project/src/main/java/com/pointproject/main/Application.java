@@ -1,7 +1,10 @@
 package com.pointproject.main;
 
+import com.pointproject.config.JwtFilter;
 import com.pointproject.enities.Country;
+import com.pointproject.enities.GameUser;
 import com.pointproject.repositories.CountryRepo;
+import com.pointproject.repositories.UserRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -24,21 +28,29 @@ public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
 
+    @Bean
+    public FilterRegistrationBean jwtFilter() {
+        final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        registrationBean.setFilter(new JwtFilter());
+        registrationBean.addUrlPatterns("/secure/*");
+
+        return registrationBean;
+
+
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class);
     }
 
     @Bean
-    public CommandLineRunner demo(@Autowired CountryRepo repo) {
+    public CommandLineRunner demo(@Autowired CountryRepo repo, UserRepo userRepo) {
         return (args) -> {
-            // save a couple of customers
+
             repo.save(new Country("Ukraine"));
             repo.save(new Country("USA"));
 
-            // fetch all customers
-            for (Country country: repo.findAll()){
-                System.out.println(country);
-            }
+            userRepo.save(new GameUser("admin","admin","admin","admin",18));
 
         };
     }

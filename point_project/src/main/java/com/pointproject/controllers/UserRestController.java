@@ -2,9 +2,13 @@ package com.pointproject.controllers;
 
 import com.pointproject.enities.GameUser;
 import com.pointproject.repositories.UserRepo;
+import com.pointproject.utils.MyToken;
+import com.pointproject.utils.UserHandler;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
@@ -18,15 +22,18 @@ public class UserRestController {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private UserHandler userHandler;
+
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public GameUser registerUser(@RequestBody GameUser user) {
         return userRepo.save(user);
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestBody GameUser userLogin) throws ServletException {
+    public ResponseEntity<MyToken> login(@RequestBody GameUser userLogin) throws ServletException {
 
-        String jwtToken = "";
+        String jwtToken;
 
         if (userLogin.getLogin() == null || userLogin.getPassword() == null) {
             throw new ServletException("Please fill in username and password");
@@ -57,6 +64,8 @@ public class UserRestController {
         jwtToken = Jwts.builder().setSubject(login).claim("roles", "user").setIssuedAt(new Date())
                 .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
 
-        return jwtToken;
+        userHandler.setGameUser(user);
+
+        return new ResponseEntity<>(new MyToken(jwtToken),HttpStatus.OK);
     }
 }

@@ -1,16 +1,21 @@
 package com.pointproject.utils;
 
 import com.pointproject.enities.GameUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Entity;
+
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 public final class UserHandler {
-private GameUser gameUser;
 
-    public UserHandler(GameUser gameUser) {
+    private MyUser gameUser;
+
+    public UserHandler(MyUser gameUser) {
         this.gameUser = gameUser;
     }
 
@@ -18,7 +23,7 @@ private GameUser gameUser;
         return gameUser;
     }
 
-    public void setGameUser(GameUser gameUser) {
+    public void setGameUser(MyUser gameUser) {
         this.gameUser = gameUser;
     }
 }

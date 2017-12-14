@@ -3,6 +3,7 @@ package com.pointproject.controllers;
 import com.pointproject.enities.GameUser;
 import com.pointproject.repositories.UserRepo;
 import com.pointproject.utils.MyToken;
+import com.pointproject.utils.MyUser;
 import com.pointproject.utils.UserHandler;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -64,7 +65,7 @@ public class UserRestController {
         jwtToken = Jwts.builder().setSubject(login).claim("roles", "user").setIssuedAt(new Date())
                 .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
 
-        userHandler.setGameUser(user);
+        userHandler.setGameUser((MyUser) user);
 
         return new ResponseEntity<>(new MyToken(jwtToken),HttpStatus.OK);
     }

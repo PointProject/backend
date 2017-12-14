@@ -4,6 +4,7 @@ import com.pointproject.enities.*;
 import com.pointproject.repositories.*;
 import com.pointproject.utils.UserHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -57,7 +58,7 @@ public class SecureController {
     }
 
     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
-    public GameUser findByEmail(@RequestBody String login) {
+    public GameUser findByLogin(@RequestBody String login) {
         List<GameUser> gameUsers = userRepo.findAll();
         for (GameUser gameUser: gameUsers){
             if (gameUser.getLogin().equals(login)){

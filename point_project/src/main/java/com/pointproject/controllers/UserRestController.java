@@ -65,7 +65,7 @@ public class UserRestController {
         jwtToken = Jwts.builder().setSubject(login).claim("roles", "user").setIssuedAt(new Date())
                 .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
 
-        userHandler.setGameUser((MyUser) user);
+        userHandler.setGameUser(new MyUser(user.getLogin(),user.getPassword(),user.getFirstName(),user.getLastName(),user.getMoney(),user.getPhone(),user.getAge(),user.getCity(),user.getLevel(),user.getExpNum()));
 
         return new ResponseEntity<>(new MyToken(jwtToken),HttpStatus.OK);
     }

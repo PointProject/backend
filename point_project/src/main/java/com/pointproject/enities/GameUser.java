@@ -1,6 +1,9 @@
 package com.pointproject.enities;
 
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -65,6 +68,8 @@ public class GameUser implements Serializable {
         this.lastName = lastName;
         this.age = age;
     }
+
+
 
     public int getId() {
         return id;

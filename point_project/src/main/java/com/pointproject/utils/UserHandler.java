@@ -13,9 +13,9 @@ import javax.persistence.Entity;
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 public final class UserHandler {
 
-    private GameUser gameUser;
+    private MyUser gameUser;
 
-    public UserHandler(GameUser gameUser) {
+    public UserHandler(MyUser gameUser) {
         this.gameUser = gameUser;
     }
 
@@ -23,7 +23,7 @@ public final class UserHandler {
         return gameUser;
     }
 
-    public void setGameUser(GameUser gameUser) {
+    public void setGameUser(MyUser gameUser) {
         this.gameUser = gameUser;
     }
 }

@@ -1,11 +1,14 @@
 package com.pointproject.utils;
 
 import com.pointproject.enities.*;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
 @Component
+@Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 public final class MyUser extends GameUser {
     public MyUser() {
     }

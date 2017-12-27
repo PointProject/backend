@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/backend_pointproject.iml" filepath="$PROJECT_DIR$/.idea/backend_pointproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/point_project/src/main/main.iml" filepath="$PROJECT_DIR$/point_project/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/point_project/point_project.iml" filepath="$PROJECT_DIR$/point_project/point_project.iml" />
       <module fileurl="file://$PROJECT_DIR$/point_project/point_project.iml" filepath="$PROJECT_DIR$/point_project/point_project.iml" />
     </modules>
   </component>

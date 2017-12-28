@@ -21,4 +21,36 @@ public class Level implements Serializable {
 
     public Level() {
     }
+
+    public int getExpNum() {
+        return expNum;
+    }
+
+    public void setExpNum(int expNum) {
+        this.expNum = expNum;
+    }
+
+    public Set<GameUser> getGameUsers() {
+        return gameUsers;
+    }
+
+    public void setGameUsers(Set<GameUser> gameUsers) {
+        this.gameUsers = gameUsers;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getLevelNum() {
+        return levelNum;
+    }
+
+    public void setLevelNum(int levelNum) {
+        this.levelNum = levelNum;
+    }
 }

@@ -1,8 +1,11 @@
 package com.pointproject.enities;
 
+import com.google.common.base.Objects;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Country implements Serializable {
@@ -13,8 +16,8 @@ public class Country implements Serializable {
 
     private String title;
 
-    @OneToMany(mappedBy = "country",fetch = FetchType.EAGER)
-    private Set<City> cities;
+    @OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
+    private List<City> cities = new ArrayList<>();
 
     public Country(String title) {
         this.title = title;
@@ -36,37 +39,38 @@ public class Country implements Serializable {
         this.title = title;
     }
 
-    public Set<City> getCities() {
+    public List<City> getCities() {
         return cities;
     }
 
-    public void setCities(Set<City> cities) {
+    public void setCities(List<City> cities) {
         this.cities = cities;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Country)) return false;
         Country country = (Country) o;
-        return id == country.id &&
-                com.google.common.base.Objects.equal(title, country.title) &&
-                com.google.common.base.Objects.equal(cities, country.cities);
+        return Objects.equal(id, country.id) &&
+                Objects.equal(title, country.title) &&
+                Objects.equal(cities, country.cities);
     }
 
     @Override
     public int hashCode() {
-        return com.google.common.base.Objects.hashCode(id, title, cities);
+        return Objects.hashCode(id, title, cities);
     }
 
     @Override
     public String toString() {
         return "Country{" +
                 "title='" + title + '\'' +
-                ", cities=" + cities +
+                ", cities=" + this.getCities() +
                 '}';
     }
 
     public Country() {
     }
+
 }

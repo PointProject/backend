@@ -31,4 +31,68 @@ public class MoneyPoint implements Serializable {
 
     public MoneyPoint() {
     }
+
+    public GameUser getGameUser() {
+        return gameUser;
+    }
+
+    public void setGameUser(GameUser gameUser) {
+        this.gameUser = gameUser;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIsActivated() {
+        return isActivated;
+    }
+
+    public void setIsActivated(int isActivated) {
+        this.isActivated = isActivated;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Race getRace() {
+        return race;
+    }
+
+    public void setRace(Race race) {
+        this.race = race;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public Zone getZone() {
+        return zone;
+    }
+
+    public void setZone(Zone zone) {
+        this.zone = zone;
+    }
 }

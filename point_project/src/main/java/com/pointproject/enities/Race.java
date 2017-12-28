@@ -26,4 +26,44 @@ public class Race implements Serializable {
 
     public Race() {
     }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public Set<GameUser> getGameUsers() {
+        return gameUsers;
+    }
+
+    public void setGameUsers(Set<GameUser> gameUsers) {
+        this.gameUsers = gameUsers;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public MoneyPoint getMoneyPoint() {
+        return moneyPoint;
+    }
+
+    public void setMoneyPoint(MoneyPoint moneyPoint) {
+        this.moneyPoint = moneyPoint;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
 }

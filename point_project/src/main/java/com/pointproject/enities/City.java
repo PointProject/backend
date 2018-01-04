@@ -1,5 +1,6 @@
 package com.pointproject.enities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Objects;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class City implements Serializable{
     private Country country;
 
     @OneToMany(mappedBy = "city", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Zone> zones;
 
     public City() {

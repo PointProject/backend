@@ -12,6 +12,8 @@ public class Race implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    private String title;
+
     @ManyToMany
     @JoinTable(name="race_user")
     private Set<GameUser> gameUsers;
@@ -65,5 +67,13 @@ public class Race implements Serializable {
 
     public void setStartTime(String startTime) {
         this.startTime = startTime;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

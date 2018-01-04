@@ -1,5 +1,7 @@
 package com.pointproject.enities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -21,9 +23,11 @@ public class Zone implements Serializable {
     private String strokeColor;
 
     @OneToMany(mappedBy = "zone")
+    @JsonIgnore
     private Set<Point> points;
 
     @OneToMany(mappedBy = "zone")
+    @JsonIgnore
     private Set<MoneyPoint> moneyPoints;
 
     public Zone() {

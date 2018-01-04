@@ -1,6 +1,8 @@
 package com.pointproject.enities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -17,6 +19,7 @@ public class Level implements Serializable {
     private int expNum;
 
     @OneToMany(mappedBy = "level")
+    @JsonIgnore
     private Set<GameUser> gameUsers;
 
     public Level() {

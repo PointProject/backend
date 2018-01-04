@@ -1,6 +1,9 @@
 package com.pointproject.enities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -35,9 +38,11 @@ public class GameUser implements Serializable {
     private Level level;
 
     @OneToMany(mappedBy = "gameUser")
+    @JsonIgnore
     private Set<MoneyPoint> moneyPoints;
 
     @ManyToMany(fetch = FetchType.EAGER,mappedBy = "gameUsers")
+    @JsonBackReference
     private Set<Race> races;
 
     private int expNum;

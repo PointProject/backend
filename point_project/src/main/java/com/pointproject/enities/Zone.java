@@ -23,7 +23,6 @@ public class Zone implements Serializable {
     private String strokeColor;
 
     @OneToMany(mappedBy = "zone")
-    @JsonIgnore
     private Set<Point> points;
 
     @OneToMany(mappedBy = "zone")

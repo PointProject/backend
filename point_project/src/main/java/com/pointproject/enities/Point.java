@@ -1,6 +1,8 @@
 package com.pointproject.enities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -12,6 +14,7 @@ public class Point implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "zone")
+    @JsonIgnore
     private Zone zone;
 
     private double latitude;

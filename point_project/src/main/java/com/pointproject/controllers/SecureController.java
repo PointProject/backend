@@ -3,8 +3,8 @@ package com.pointproject.controllers;
 import com.pointproject.enities.*;
 import com.pointproject.repositories.*;
 import com.pointproject.utils.UserHandler;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,6 +44,8 @@ public class SecureController {
 
     @Autowired
     private UserHandler userHandler;
+
+    private static final Logger log = Logger.getLogger(SecureController.class);
 
 
     //---------------------USER--------------------------
@@ -165,6 +167,12 @@ public class SecureController {
 
     @RequestMapping(value = "/zone/update", method = RequestMethod.POST)
     public Zone updateZone(@RequestBody Zone zone) {
+        for(Point point : zone.getPoints()){
+            pointRepo.save(point);
+            if (log.isDebugEnabled()){
+                log.debug(point + " : was added");
+            }
+        }
         return zoneRepo.save(zone);
     }
     //---------------------Zone--------------------------

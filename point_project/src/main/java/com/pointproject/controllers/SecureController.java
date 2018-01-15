@@ -167,11 +167,13 @@ public class SecureController {
 
     @RequestMapping(value = "/zone/update", method = RequestMethod.POST)
     public Zone updateZone(@RequestBody Zone zone) {
+        if (zone.getPoints() != null){
         for(Point point : zone.getPoints()){
             pointRepo.save(point);
             if (log.isDebugEnabled()){
                 log.debug(point + " : was added");
             }
+        }
         }
         return zoneRepo.save(zone);
     }

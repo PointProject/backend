@@ -21,6 +21,8 @@ public class Point implements Serializable {
 
     private double longitude;
 
+    private int numberInSequence;
+
     public Point() {
     }
 
@@ -54,5 +56,13 @@ public class Point implements Serializable {
 
     public void setZone(Zone zone) {
         this.zone = zone;
+    }
+
+    public int getNumberInSequence() {
+        return numberInSequence;
+    }
+
+    public void setNumberInSequence(int numberInSequence) {
+        this.numberInSequence = numberInSequence;
     }
 }

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/secure")
@@ -168,12 +170,11 @@ public class SecureController {
     @RequestMapping(value = "/zone/update", method = RequestMethod.POST)
     public Zone updateZone(@RequestBody Zone zone) {
         if (zone.getPoints() != null){
-        for(Point point : zone.getPoints()){
-            pointRepo.save(point);
-            if (log.isDebugEnabled()){
-                log.debug(point + " : was added");
+            Set<Point> zonePoints = zone.getPoints();
+            if (zonePoints.size() > 0){
+                Set<Point> zonePointsFromDB = new HashSet<>(pointRepo.save(zonePoints));
+                zone.setPoints(zonePointsFromDB);
             }
-        }
         }
         return zoneRepo.save(zone);
     }

@@ -12,7 +12,8 @@ import java.util.Set;
 public class GameUser implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "gameuser_seq_gen")
+    @SequenceGenerator(name = "gameuser_seq_gen", sequenceName = "gameuser_id_seq", allocationSize = 1)
     private int id;
 
     private String login;

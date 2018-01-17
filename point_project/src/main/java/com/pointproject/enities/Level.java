@@ -11,7 +11,8 @@ import java.util.Set;
 public class Level implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "level_seq_gen")
+    @SequenceGenerator(name = "level_seq_gen", sequenceName = "level_id_seq", allocationSize = 1)
     private int id;
 
     private int levelNum;

@@ -11,7 +11,8 @@ import java.util.List;
 public class City implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "city_seq_gen")
+    @SequenceGenerator(name = "city_seq_gen", sequenceName = "city_id_seq", allocationSize = 1)
     private int id;
 
     private String title;

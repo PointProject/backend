@@ -9,7 +9,8 @@ import java.util.Set;
 @Entity
 public class Zone implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "zone_seq_gen")
+    @SequenceGenerator(name = "zone_seq_gen", sequenceName = "zone_id_seq", allocationSize = 1)
     private int id;
 
     @ManyToOne(fetch = FetchType.EAGER)

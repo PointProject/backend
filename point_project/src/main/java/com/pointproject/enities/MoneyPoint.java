@@ -6,7 +6,8 @@ import java.io.Serializable;
 @Entity
 public class MoneyPoint implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "moneypoint_seq_gen")
+    @SequenceGenerator(name = "moneypoint_seq_gen", sequenceName = "moneypoint_id_seq", allocationSize = 1)
     private int id;
 
     @ManyToOne

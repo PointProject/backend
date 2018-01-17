@@ -9,7 +9,8 @@ import java.io.Serializable;
 @Entity
 public class Point implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "point_seq_gen")
+    @SequenceGenerator(name = "point_seq_gen", sequenceName = "point_id_seq", allocationSize = 1)
     private int id;
 
     @ManyToOne

@@ -12,7 +12,8 @@ import java.util.List;
 public class Country implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "country_seq_gen")
+    @SequenceGenerator(name = "country_seq_gen", sequenceName = "country_id_seq", allocationSize = 1)
     private int id;
 
     private String title;

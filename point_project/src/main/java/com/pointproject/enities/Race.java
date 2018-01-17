@@ -9,7 +9,8 @@ import java.util.Set;
 public class Race implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "race_seq_gen")
+    @SequenceGenerator(name = "race_seq_gen", sequenceName = "race_id_seq", allocationSize = 1)
     private int id;
 
     private String title;

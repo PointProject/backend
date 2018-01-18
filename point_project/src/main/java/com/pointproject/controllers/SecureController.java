@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/secure")
@@ -169,12 +169,13 @@ public class SecureController {
     @RequestMapping(value = "/zone/update", method = RequestMethod.POST)
     public Zone updateZone(@RequestBody Zone zone) {
         if (zone.getPoints() != null && zone.getPoints().size() > 0){
-            Set<Point> zonePoints = zone.getPoints();
+            List<Point> zonePoints = new ArrayList<>(zone.getPoints());
             zone = zoneRepo.save(zone);
             for (Point point : zonePoints){
                 point.setZone(zone);
             }
-            pointRepo.save(zone.getPoints());
+            zonePoints = pointRepo.save(zonePoints);
+            zone.setPoints(zonePoints);
             return zone;
         }
         return zoneRepo.save(zone);

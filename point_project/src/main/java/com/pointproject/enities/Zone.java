@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,7 +25,7 @@ public class Zone implements Serializable {
     private String strokeColor;
 
     @OneToMany(mappedBy = "zone")
-    private Set<Point> points;
+    private List<Point> points;
 
     @OneToMany(mappedBy = "zone")
     @JsonIgnore
@@ -65,11 +66,11 @@ public class Zone implements Serializable {
         this.moneyPoints = moneyPoints;
     }
 
-    public Set<Point> getPoints() {
+    public List<Point> getPoints() {
         return points;
     }
 
-    public void setPoints(Set<Point> points) {
+    public void setPoints(List<Point> points) {
         this.points = points;
     }
 

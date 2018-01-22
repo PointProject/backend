@@ -1,0 +1,1 @@
+INSERT INTO public.game_user (id, age, exp_num, first_name, last_name, login, money, password, phone, city, level) VALUES (1, 18, 0, 'admin', 'admin', 'admin', 0, 'admin', 0, null, null);

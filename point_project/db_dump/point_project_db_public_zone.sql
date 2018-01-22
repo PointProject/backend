@@ -1,0 +1,1 @@
+INSERT INTO public.zone (id, fill_color, stroke_color, title, city) VALUES (3, '#0776A0', '#0776A0', 'Поскот', 2);

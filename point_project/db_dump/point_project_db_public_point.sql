@@ -1,0 +1,11 @@
+INSERT INTO public.point (id, latitude, longitude, number_in_sequence, zone) VALUES (9, 46.592740780609844, 30.807509422302246, 0, 3);
+INSERT INTO public.point (id, latitude, longitude, number_in_sequence, zone) VALUES (10, 46.5849399694884, 30.80240249633789, 1, 3);
+INSERT INTO public.point (id, latitude, longitude, number_in_sequence, zone) VALUES (11, 46.58169544528978, 30.811758041381836, 2, 3);
+INSERT INTO public.point (id, latitude, longitude, number_in_sequence, zone) VALUES (12, 46.574055298740554, 30.806286334991455, 3, 3);
+INSERT INTO public.point (id, latitude, longitude, number_in_sequence, zone) VALUES (13, 46.57722653271668, 30.79695224761963, 4, 3);
+INSERT INTO public.point (id, latitude, longitude, number_in_sequence, zone) VALUES (15, 46.557252039967665, 30.77173948287964, 6, 3);
+INSERT INTO public.point (id, latitude, longitude, number_in_sequence, zone) VALUES (16, 46.56256355350797, 30.769550800323486, 7, 3);
+INSERT INTO public.point (id, latitude, longitude, number_in_sequence, zone) VALUES (17, 46.5661337786974, 30.772619247436523, 8, 3);
+INSERT INTO public.point (id, latitude, longitude, number_in_sequence, zone) VALUES (18, 46.58514643263869, 30.778026580810547, 9, 3);
+INSERT INTO public.point (id, latitude, longitude, number_in_sequence, zone) VALUES (19, 46.60096801876597, 30.794098377227783, 10, 3);
+INSERT INTO public.point (id, latitude, longitude, number_in_sequence, zone) VALUES (14, 46.56485029503995, 30.787811279296875, 5, 3);

@@ -88,6 +88,12 @@ public class SecureController {
     public Country updateCountry(@RequestBody Country country) {
         return countryRepo.save(country);
     }
+
+    @RequestMapping(value = "/country/delete", method = RequestMethod.POST)
+    public String deleteCountry(@RequestBody Country country){
+        countryRepo.delete(country);
+        return "Deleted";
+    }
     //---------------------Country--------------------------
 
 
@@ -102,6 +108,12 @@ public class SecureController {
     public City updateCity(@RequestBody City city) {
         return cityRepo.save(city);
     }
+
+    @RequestMapping(value = "/city/delete", method = RequestMethod.POST)
+    public String deleteCity(@RequestBody City city){
+        cityRepo.delete(city);
+        return "Deleted";
+    }
     //---------------------City--------------------------
 
 
@@ -110,12 +122,19 @@ public class SecureController {
     public List<Level> levelList (){
         return levelRepo.findAll();
     }
-    //---------------------Level--------------------------
+
+    @RequestMapping(value = "/level/delete", method = RequestMethod.POST)
+    public String deleteLevel(@RequestBody Level level){
+        levelRepo.delete(level);
+        return "Deleted";
+    }
 
     @RequestMapping(value = "/level/update", method = RequestMethod.POST)
     public Level updateLevel(@RequestBody Level level) {
         return levelRepo.save(level);
     }
+
+    //---------------------Level--------------------------
 
     //---------------------MoneyPoint--------------------------
     @RequestMapping(value = "/moneypoint/list", method = RequestMethod.GET)
@@ -126,6 +145,12 @@ public class SecureController {
     @RequestMapping(value = "/moneypoint/update", method = RequestMethod.POST)
     public MoneyPoint updateMoneyPoint(@RequestBody MoneyPoint moneyPoint) {
         return moneyPointRepo.save(moneyPoint);
+    }
+
+    @RequestMapping(value = "/moneypoint/delete", method = RequestMethod.POST)
+    public String deleteMoneyPoint(@RequestBody MoneyPoint moneyPoint){
+        moneyPointRepo.delete(moneyPoint);
+        return "Deleted";
     }
 
     //---------------------MoneyPoint--------------------------
@@ -142,6 +167,12 @@ public class SecureController {
     public Point updatePoint(@RequestBody Point point) {
         return pointRepo.save(point);
     }
+
+    @RequestMapping(value = "/point/delete", method = RequestMethod.POST)
+    public String deleteCountry(@RequestBody Point point){
+        pointRepo.delete(point);
+        return "Deleted";
+    }
     //---------------------Point--------------------------
 
 
@@ -154,6 +185,12 @@ public class SecureController {
     @RequestMapping(value = "/race/update", method = RequestMethod.POST)
     public Race updateRace(@RequestBody Race race) {
         return raceRepo.save(race);
+    }
+
+    @RequestMapping(value = "/race/delete", method = RequestMethod.POST)
+    public String deleteRace(@RequestBody Race race){
+        raceRepo.delete(race);
+        return "Deleted";
     }
 
     //---------------------Race--------------------------
@@ -179,6 +216,12 @@ public class SecureController {
             return zone;
         }
         return zoneRepo.save(zone);
+    }
+
+    @RequestMapping(value = "/zone/delete", method = RequestMethod.POST)
+    public String deleteCountry(@RequestBody Zone zone){
+        zoneRepo.delete(zone);
+        return "Deleted";
     }
     //---------------------Zone--------------------------
 

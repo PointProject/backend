@@ -13,7 +13,7 @@ public final class MyUser extends GameUser {
     public MyUser() {
     }
 
-    public MyUser(String login, String password, String firstName, String lastName, int money, int phone, int age, City city, Level level, int expNum) {
+    public MyUser(String login, String password, String firstName, String lastName, int money, String phone, int age, City city, Level level, int expNum) {
         super(login, password, firstName, lastName, money, phone, age, city, level, expNum);
     }
 
@@ -82,12 +82,12 @@ public final class MyUser extends GameUser {
     }
 
     @Override
-    public int getPhone() {
+    public String getPhone() {
         return super.getPhone();
     }
 
     @Override
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         super.setPhone(phone);
     }
 

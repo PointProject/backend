@@ -17,3 +17,11 @@ INSERT INTO public.zone (id, fill_color, stroke_color, title, city) VALUES (17, 
 INSERT INTO public.zone (id, fill_color, stroke_color, title, city) VALUES (18, '#ff80ff', '#ff00ff', 'МАЛИНА', 1);
 INSERT INTO public.zone (id, fill_color, stroke_color, title, city) VALUES (19, '#408080', '#008040', 'ЦЕНТР_3', 2);
 INSERT INTO public.zone (id, fill_color, stroke_color, title, city) VALUES (12, '#008000', '#00ff40', 'ПРИМОРСКИЙ', 2);
+INSERT INTO public.zone (id, fill_color, stroke_color, title, city) VALUES (20, '#808040', '#808000', 'АРКАДИЯ', 2);
+INSERT INTO public.zone (id, fill_color, stroke_color, title, city) VALUES (21, '#8080ff', '#8000ff', 'ЧЕРЁМУШКИ', 2);
+INSERT INTO public.zone (id, fill_color, stroke_color, title, city) VALUES (22, '#800080', '#004080', 'ТАИРОВО ЮГ', 2);
+INSERT INTO public.zone (id, fill_color, stroke_color, title, city) VALUES (23, '#8080c0', '#ff00ff', 'ТАИРОВО', 2);
+INSERT INTO public.zone (id, fill_color, stroke_color, title, city) VALUES (24, '#ff8000', '#800000', 'БИГ ФОНТАН', 2);
+INSERT INTO public.zone (id, fill_color, stroke_color, title, city) VALUES (25, '#008000', '#80ff80', 'ЮЖНЫЙ', 3);
+INSERT INTO public.zone (id, fill_color, stroke_color, title, city) VALUES (26, '#ffff00', '#0080ff', 'ИЛЬИЧЁВСК ЗАПАД', 4);
+INSERT INTO public.zone (id, fill_color, stroke_color, title, city) VALUES (27, '#00ffff', '#ff8040', 'ИЛЬИЧЁВСК ВОСТОК', 4);

@@ -26,7 +26,7 @@ public class GameUser implements Serializable {
 
     private int money;
 
-    private int phone;
+    private String phone;
 
     private int age;
 
@@ -51,7 +51,7 @@ public class GameUser implements Serializable {
     public GameUser() {
     }
 
-    public GameUser(String login, String password, String firstName, String lastName, int money, int phone, int age, City city, Level level, int expNum) {
+    public GameUser(String login, String password, String firstName, String lastName, int money, String phone, int age, City city, Level level, int expNum) {
         this.login = login;
         this.password = password;
         this.firstName = firstName;
@@ -122,11 +122,11 @@ public class GameUser implements Serializable {
         this.money = money;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

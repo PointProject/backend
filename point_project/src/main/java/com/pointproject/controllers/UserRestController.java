@@ -27,8 +27,18 @@ public class UserRestController {
     private UserHandler userHandler;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public GameUser registerUser(@RequestBody GameUser user) {
-        return userRepo.save(user);
+    public ResponseEntity<MyToken> registerUser(@RequestBody GameUser user) {
+        for (GameUser gameUser : userRepo.findAll()){
+            if (user.getLogin().equals(gameUser.getLogin()) ||
+                    user.getPhone().equals(gameUser.getPhone())){
+                return null;
+            }
+        }
+
+        String jwtToken = Jwts.builder().setSubject(user.getLogin()).claim("roles", "user").setIssuedAt(new Date())
+                .signWith(SignatureAlgorithm.HS256, "pr!vet9vov@n").compact();
+
+        return new ResponseEntity<>(new MyToken(jwtToken),HttpStatus.OK);
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -63,7 +73,7 @@ public class UserRestController {
         }
 
         jwtToken = Jwts.builder().setSubject(login).claim("roles", "user").setIssuedAt(new Date())
-                .signWith(SignatureAlgorithm.HS256, "secretkey").compact();
+                .signWith(SignatureAlgorithm.HS256, "pr!vet9vov@n").compact();
 
         userHandler.setGameUser(new MyUser(user.getLogin(),user.getPassword(),user.getFirstName(),user.getLastName(),user.getMoney(),user.getPhone(),user.getAge(),user.getCity(),user.getLevel(),user.getExpNum()));
 

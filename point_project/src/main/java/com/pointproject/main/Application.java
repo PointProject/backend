@@ -1,12 +1,13 @@
 package com.pointproject.main;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import com.pointproject.config.JwtFilter;
-import com.pointproject.enities.City;
-import com.pointproject.enities.Country;
-import com.pointproject.enities.GameUser;
 import com.pointproject.repositories.CityRepo;
 import com.pointproject.repositories.CountryRepo;
 import com.pointproject.repositories.UserRepo;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -43,26 +44,24 @@ public class Application {
     }
 
     @Bean
-    public CommandLineRunner demo(CountryRepo repo, UserRepo userRepo, CityRepo cityRepo) {
+    public CommandLineRunner initializeApp(CountryRepo repo, UserRepo userRepo, CityRepo cityRepo) {
         return (args) -> {
-
-            Country country = new Country("Ukraine");
-
-            repo.save(country);
-            repo.save(new Country("USA"));
-            userRepo.save(new GameUser("admin","admin","admin","admin",18));
-
-            cityRepo.save(new City("Moscow"));
-            cityRepo.save(new City(repo.findAll().iterator().next(),"Odessa"));
-
-/*            for (City city : cityRepo.findAll()){
-                try {
-                    System.err.println(city.getTitle() + " " + city.getCountry().getTitle());
-                }catch (NullPointerException e){
-                    System.err.println(city);
-                }
-            }*/
-
+            initializeFB();
         };
+    }
+
+    private void initializeFB() throws FileNotFoundException {
+        FileInputStream serviceAccount = new FileInputStream(this.getClass()
+                                                                 .getClassLoader()
+                                                                 .getResource(
+                                                                     "paidpoint-228-firebase-adminsdk-crlnq-1aec94312b.json")
+                                                                 .getPath());
+
+        FirebaseOptions options = new FirebaseOptions.Builder().setCredentials(
+            GoogleCredentials.fromStream(serviceAccount))
+            .setDatabaseUrl("https://paidpoint-228.firebaseio.com/")
+            .build();
+
+        FirebaseApp.initializeApp(options);
     }
 }

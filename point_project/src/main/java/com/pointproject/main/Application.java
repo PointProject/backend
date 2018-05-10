@@ -1,12 +1,12 @@
 package com.pointproject.main;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
 import com.pointproject.config.JwtFilter;
-import com.pointproject.repositories.CityRepo;
-import com.pointproject.repositories.CountryRepo;
-import com.pointproject.repositories.UserRepo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,13 +44,13 @@ public class Application {
     }
 
     @Bean
-    public CommandLineRunner initializeApp(CountryRepo repo, UserRepo userRepo, CityRepo cityRepo) {
+    public CommandLineRunner initializeApp() {
         return (args) -> {
             initializeFB();
         };
     }
 
-    private void initializeFB() throws FileNotFoundException {
+    private void initializeFB() throws IOException {
         FileInputStream serviceAccount = new FileInputStream(this.getClass()
                                                                  .getClassLoader()
                                                                  .getResource(

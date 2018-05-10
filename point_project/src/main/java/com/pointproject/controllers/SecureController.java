@@ -1,8 +1,28 @@
 package com.pointproject.controllers;
 
-import com.pointproject.enities.*;
-import com.pointproject.repositories.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.Message;
+import com.pointproject.enities.City;
+import com.pointproject.enities.Country;
+import com.pointproject.enities.GameUser;
+import com.pointproject.enities.Level;
+import com.pointproject.enities.MoneyPoint;
+import com.pointproject.enities.Point;
+import com.pointproject.enities.Race;
+import com.pointproject.enities.Zone;
+import com.pointproject.repositories.CityRepo;
+import com.pointproject.repositories.CountryRepo;
+import com.pointproject.repositories.LevelRepo;
+import com.pointproject.repositories.MoneyPointRepo;
+import com.pointproject.repositories.PointRepo;
+import com.pointproject.repositories.RaceRepo;
+import com.pointproject.repositories.UserRepo;
+import com.pointproject.repositories.ZoneRepo;
 import com.pointproject.utils.UserHandler;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,9 +31,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/secure")
@@ -183,8 +200,29 @@ public class SecureController {
     }
 
     @RequestMapping(value = "/race/update", method = RequestMethod.POST)
-    public Race updateRace(@RequestBody Race race) {
-        return raceRepo.save(race);
+    public ResponseEntity<Race> updateRace(@RequestBody Race race) {
+
+        String topic = "race";
+
+        Message message = Message.builder()
+            .putData("score", "850")
+            .putData("time", "2:45")
+            .putData("race_id", "new_race_id")
+            .setTopic(topic)
+            .build();
+
+        String response;
+        try {
+            response = FirebaseMessaging.getInstance()
+                .sendAsync(message)
+                .get();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        log.debug("Successfully sent message: " + response);
+        return new ResponseEntity<>(raceRepo.save(race), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/race/delete", method = RequestMethod.POST)
